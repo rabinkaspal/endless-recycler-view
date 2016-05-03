@@ -20,19 +20,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView rvItems = (RecyclerView) findViewById(R.id.rvContacts);
-
         final List<Contact> allContacts = Contact.createContactsList(10, 0);
-
         final ContactsAdapter adapter = new ContactsAdapter(allContacts);
         rvItems.setAdapter(adapter);
 
 
+        //these lines have been added to allow git to track changes to the project directory
 //        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
         final StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
-
         rvItems.setLayoutManager(gridLayoutManager);
-
         rvItems.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
